@@ -2,31 +2,14 @@ import React, { useEffect, useState } from "react";
 import PostCard from "./Componenta/PostCard";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setIsPostError,
-  setIsPostLoading,
-  setPostList,
-} from "../../redux/Slices/postSlice";
+import { getPostData } from "../../redux/Slices/postSlice";
 
 const Post = () => {
   const dispatch = useDispatch();
   const postState = useSelector((state) => state.post);
 
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const res = await axios.get(
-          "https://json-placeholder.mock.beeceptor.com/posts"
-        );
-        dispatch(setPostList(res.data));
-      } catch (error) {
-        dispatch(setIsPostError(true));
-      } finally {
-        dispatch(setIsPostLoading(false));
-      }
-    };
-
-    getData();
+    dispatch(getPostData());
   }, []);
 
   if (postState.isError) {

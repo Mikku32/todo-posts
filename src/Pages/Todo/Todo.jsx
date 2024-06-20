@@ -2,32 +2,17 @@ import React, { useEffect, useState } from "react";
 import TodoCard from "./Components/TodoCard";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setIsTodoError,
-  setIsTodoLoading,
-  setTodoList,
-} from "../../redux/Slices/todoSlice";
+import { getTodoData } from "../../redux/Slices/todoSlice";
 
 const Todo = () => {
   const dispatch = useDispatch();
   const todoState = useSelector((state) => state.todo);
+  const postinte = useSelector((state) => state.post);
 
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const res = await axios.get(
-          "https://jsonplaceholder.typicode.com/todos"
-        );
-        dispatch(setTodoList(res.data));
-      } catch (error) {
-        dispatch(setIsTodoError(true));
-      } finally {
-        dispatch(setIsTodoLoading(false));
-      }
-    };
-
-    getData();
+    dispatch(getTodoData());
   }, []);
+
   if (todoState.isError) {
     return <p>Something went wrong</p>;
   }
