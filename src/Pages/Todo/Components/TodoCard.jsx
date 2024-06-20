@@ -1,23 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
-const TodoCard = ({todo}) => {
+const TodoCard = ({ todo }) => {
+  const [isChecked, setIsChecked] = useState(todo.completed);
 
-    const [isChecked, setIsChecked] = useState(todo.completed)
-    
   return (
-
-    
-    
     <div className="flex  gap-6 bg-slate-400 p-2 mx-6 rounded-xl">
       <p className="text-3sm font-bold">{todo.title}</p>
-      <input type="checkbox" checked={isChecked} 
-      onChange={() => {
-        setIsChecked(!isChecked)
-      }}
+      <input
+        type="checkbox"
+        checked={isChecked}
+        onChange={() => {
+          setIsChecked(!isChecked);
+        }}
       />
     </div>
- 
-  )
-}
+  );
+};
 
-export default TodoCard
+export default TodoCard;
