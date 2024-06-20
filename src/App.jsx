@@ -1,5 +1,5 @@
 import { Route, Routes, useNavigate } from "react-router-dom"
-import Post from "./Pages/Post"
+import Post from "./Pages/Post/Post"
 import Todo from "./Pages/Todo/Todo"
 import NavBar from "./Components/NavBar"
 

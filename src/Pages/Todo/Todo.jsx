@@ -15,7 +15,7 @@ const Todo = () => {
         );
         setTodoList(res.data);
       } catch (error) {
-        setIsError(true);
+        setIsError(true); 
       } finally {
         setIsLoading(false);
       }
